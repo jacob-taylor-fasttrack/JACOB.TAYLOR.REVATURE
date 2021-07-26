@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+<session-factory>
+<property name="hibernate.connection.driver_class">
+	org.postgresql.Driver
+</property>
+<property name ="hibernate.dialect">
+org.hibernate.dialect.PostgreSQLDialect
+</property>
+<property name="hibernate.connection.url">
+jdbc:postgresql://jacob-database.czxfkjoavfc1.us-east-2.rds.amazonaws.com/postgres
+</property>
+<property name="hibernate.connection.username">
+jacob
+</property>
+<property name="hibernate.connection.password">
+password
+</property>
+
+
+
+
+
+<!-- Optional properties -->
+<property name="show_sql">
+	true
+</property>
+<property name="hbm2ddl.auto">
+	update
+</property>
+<property name="format_sql">
+true
+</property>
+<mapping class="com.revature.models.Communication"/>
+<mapping class="com.revature.models.DeniedRequests"/>
+<mapping class="com.revature.models.Employees"/>
+<mapping class="com.revature.models.Events"/>
+<mapping class="com.revature.models.EventTypes"/>
+<mapping class="com.revature.models.GradingFormats"/>
+<mapping class="com.revature.models.ReimbRequests"/>
+<mapping class="com.revature.models.Reimbursements"/>
+<mapping class="com.revature.models.RequestAttachments"/>
+
+
+
+</session-factory>
+</hibernate-configuration>

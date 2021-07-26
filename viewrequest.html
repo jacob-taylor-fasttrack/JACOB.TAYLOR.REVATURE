@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Request Viewer</title>
+    </head>
+    
+    <body>
+    
+        <h3>Request Viewer By Name</h3>
+        <input id="events_id" type="number" >
+    
+        <button onclick="getRequest()">Get Request</button>
+        <button onclick="removeRequest()">Remove Request</button>
+        <p id="result"></p>
+    
+    
+    </body>
+    <script>
+    
+        function getRequest() {
+    
+            console.log("Getting Request");
+    
+            let events_id = document.getElementById("events_id").value;
+            console.log(events_id);
+    
+    
+            let xhr = new XMLHttpRequest();
+    
+            xhr.onreadystatechange = function () {
+    
+                if (this.readyState == 4 & this.status == 200) {
+                    console.log(this.responseText);
+    
+                    let requests = JSON.parse(this.responseText);
+    
+                    populateResult(requests);
+                  
+    
+                }
+            };
+    
+            url = "http://localhost:7000/events" + events_id
+            xhr.open("GET", url, true);
+    
+            xhr.send();
+        }
+    
+    
+        function populateResult(requests) {
+    
+            let result = document.getElementById("result");
+            result.innerHTML = '';
+            let idNode=document.createElement("h3");
+            let dateNode = document.createElement("h3");
+            let descNode = document.createElement("h3");
+            let timeNode = document.createElement("h3");
+            let locationNode = document.createElement("h3");
+            let costNode = document.createElement("h3");
+           
+           
+    
+            idNode.innerHTML = "ID: " + requests.id;
+            dateNode.innerHTML = "Date: " + requests.date;
+            descNode.innerHTML="Desc: "+ requsts.desc;
+           
+            timeNode.innerHTML="Time: "+requests.time;
+            locationNode.innerHTML="Location: "+ requests.location;
+            costNode.innerHTML="Cost:"+requests.cost;
+           
+       
+           
+         
+            result.appendChild(idNode);
+            result.appendChild(dateNode);
+            result.appendChild(descNode);
+           
+            result.appendChild(timeNode);
+            result.appendChild(locationNode);
+            result.appendChild(costNode);
+        
+        }
+        
+        
+    
+        function removeRequest() {
+    
+            console.log("Deleting Request");
+    
+    let firstname = document.getElementById("events_id").value;
+    console.log(firstname);
+
+
+    let xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function () {
+
+        if (this.readyState == 4 & this.status == 200) {
+            console.log(this.responseText);
+
+            let requests = JSON.parse(this.responseText);
+
+            populateResult(requests);
+          
+
+        }
+    };
+
+    url = "http://localhost:7000/events" + events_id
+    xhr.open("DELETE", url, true);
+
+    xhr.send();
+}
+    
+    </script>
+    
+</html>
