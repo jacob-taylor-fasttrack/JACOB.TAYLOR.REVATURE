@@ -1,0 +1,51 @@
+<div id="app-view">
+
+    <div id="main" class="content">
+  <head>
+   
+    <h1> Employee Page</h1>
+  </head>
+      
+  
+    
+      <h4>Info on grading formats and event type numbers</h4>
+         
+        <button type="button" id="addreimb" class="close" data-dismiss="modal"onclick="location.href='info.html'" >Info on grading and events</button>
+     
+  
+     
+      <!-- The Reimb Modal -->
+      <div class="modal fade" id="reimbModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+  
+            <!-- Reimb Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Add a Reimbursement</h4>
+              <button type="button" id="addreimb" class="close" data-dismiss="modal"onclick="location.href='addrequest.html'" onclick="addrequest()">Add request</button>
+            </div>
+            <div class="modal-header">
+              <h4 class="modal-title">Get Reimbursement</h4>
+              <button type="button"  id="getreimb"class="close" data-dismiss="modal"onclick="location.href='viewrequest.html'" >Get request</button>
+            </div>
+            <div class="modal-header">
+              <h4 class="modal-title">Delete a Reimbursement</h4>
+              <button type="button" id="deletereimb" class="close" data-dismiss="modal"onclick="location.href='viewrequest.html'">Delete request</button>
+            </div>
+
+  
+            
+  
+            <!-- Login Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="location.href='index.html'">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  
+  </div>
+  <script src="addrequest.html"></script>
+  <script src="viewrequest.html"></script>

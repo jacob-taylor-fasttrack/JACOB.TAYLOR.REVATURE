@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Request Adder</title>
+    
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+        <style>
+            #addForm {
+                margin: 25px;
+                width: 75%;
+                background-color: rgb(212, 212, 212);
+                padding: 10px;
+            }
+        </style>
+    </head>
+    
+    <body>
+    
+        <!-- <div id="addForm">
+            <label>Actor Name</label>
+            <input type="text" id="name"><br>
+    
+    
+            <label>Age</label>
+            <input type="number" id="age"><br>
+    
+            <label>Worth</label>
+            <input type="number" id="worth"><br>
+    
+            <button onclick="addActor()">Add Actor</button>
+            
+        </div> -->
+        <div id="addForm">
+            <div class="form-group row">
+                <label for="eventdate" class="col-sm-2 col-form-label">Event Date</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="eventdate" placeholder="Eventdate">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="eventtime" class="col-sm-2 col-form-label">Event Time</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="eventtime" placeholder="EventTime">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="eventlocation" class="col-sm-2 col-form-label">Event Location</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="eventlocation" placeholder="location">
+                </div>
+                <div class="form-group row">
+                    <label for="description" class="col-sm-2 col-form-label">Description</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="description" placeholder="description">
+                    </div>
+                <div class="form-group row">
+                    <label for="cost" class="col-sm-2 col-form-label">Cost</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="cost" placeholder="$$$$$$">
+                    </div>
+                    <div class="form-group row">
+                        <label for="eventType" class="col-sm-2 col-form-label">Event Type by number</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="eventType" placeholder="events">
+                        </div>
+                        <div class="form-group row">
+                            <label for="gradingformat" class="col-sm-2 col-form-label">Grading Format by number</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" id="gradingformat" placeholder="gradingFormat">
+                            </div>
+                            <div class="form-group row">
+                                <label for="passingGrade" class="col-sm-2 col-form-label">Passing Grade</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" id="passingGrade" placeholder="50">
+                                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-12">
+                    <button type="button" class="btn btn-primary" onclick="addRequest()" style="float: right;">Add
+                        Request</button>
+                </div>
+            </div>
+    
+        </div>
+    
+        <p id="success"></p>
+    
+    </body>
+    <script>
+    
+       
+    
+        function addRequest() {
+    
+            console.log("Adding Request");
+    
+            let dateValue = document.getElementById("eventdate").value;
+            let timeValue= document.getElementById("eventtime").value;
+            let locationValue = document.getElementById("eventlocation").value;
+            let descValue=document.getElementById("description").value;
+            let costValue = document.getElementById("cost").value;
+            let typeValue=document.getElementById("eventType").value;
+            let gradeformatValue=document.getElementById("gradingformat").value;
+            let passgradeValue=document.getElementById("passingGrade").value;
+    
+            let xhttp = new XMLHttpRequest();
+    
+            xhttp.onreadystatechange = function () {
+                console.log(this.readyState)
+                console.log(this.status)
+                console.log(xhttp.responseText)
+                if (this.readyState == 4 ) {
+                    console.log(this.responseText);
+    
+                    if (JSON.stringify(this.responseText)) {
+                        document.getElementById("success").innerHTML = "Actor Successfully Added!"
+                    } else {
+                        document.getElementById("success").innerHTML = "Actor was not Added!"
+                    }
+                } else if (this.readyState == 4) {
+                    document.getElementById("success").innerHTML = "Request was not successfully processed!"
+                }
+    
+            }
+    
+            let url = "http://localhost:7001/events";
+            xhttp.open("POST", url, true);
+    
+            xhttp.setRequestHeader('Content-Type', 'application/json');
+    
+            let request = {
+                eventdate: dateValue,
+                eventtime: timeValue,
+                eventlocation: locationValue,
+                description: descValue,
+                cost: costValue,
+                eventType: typeValue,
+                gradingformat: gradeformatValue,
+                passingGrade: passgradeValue
+
+            }
+    
+            //The optional argument in the send() method allows us to provide a body.
+            xhttp.send(JSON.stringify(request));
+    
+        }
+    
+    </script>
+    
+</html>

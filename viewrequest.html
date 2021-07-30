@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <title>Request Viewer</title>
+    </head>
+    
+    <body>
+    
+        <h1>Request Viewer By Employee #</h1>
+        <input id="events_id" type="number" >
+    
+        <button onclick="getRequest(events_id)"> Get Request</button>
+        <button  onclick="removeRequest()">Remove Request</button>
+        
+        <table class="table table-striped table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Character Info</th>
+                    <th>Value</th>
+                </tr>
+         
+            </thead>
+            <tbody>
+             
+             <tr>
+                 <td>cost</td>
+                 <td id="cost">-</td>
+             </tr>
+             <tr>
+                 <td>Description</td>
+                 <td id="description">-</td>
+             </tr>
+             <tr>
+                 <td>Event Date</td>
+                 <td id="eventdate">-</td>
+             </tr>
+             <tr>
+                <td>Event Location</td>
+                <td id="eventlocation">-</td>
+            </tr>
+            <tr>
+                <td>Event Time</td>
+                <td id="eventtime">-</td>
+            </tr>
+            </tbody>
+            </table>
+    
+    </body>
+    <script>
+    
+        function getRequest() {
+    
+            console.log("Getting Request");
+    
+            let events_id = document.getElementById("events_id").value;
+            console.log(events_id);
+    
+    
+           
+    
+          
+                    console.log("Getting Character");
+
+//step 1
+let xhttp= new XMLHttpRequest();
+
+//step 2
+xhttp.onreadystatechange= function(){
+    console.log("Current Ready State:"+this.readyState);
+
+    if(this.readyState==4){
+        //we have a successful and completed request and can now process the response
+        console.log("Successful Call");
+        console.log(this.responseText);
+        let character=JSON.parse(this.responseText);
+        console.log(character);
+        console.log(character.cost);
+      
+
+
+
+        document.getElementById("cost").innerHTML=character.cost;
+        document.getElementById("description").innerHTML=character.discription;
+        document.getElementById("eventdate").innerHTML=character.eventdate;
+        document.getElementById("eventlocation").innerHTML=character.eventlocation;
+        document.getElementById("eventtime").innerHTML=character.eventtime;
+
+
+
+      
+
+        
+
+    
+    }else if(this.readyState==4){
+        console.log("Status code :"+this.status);
+    }
+    
+
+    }
+    let randomNum="events_id"; 
+   url =`http://localhost:7001/events/${events_id}`;
+
+
+//step 3
+xhttp.open("GET",url,true);
+//step 4
+xhttp.send();
+
+
+
+
+
+        
+}
+    
+                
+            
+    
+          
+    
+    
+       
+        
+    
+        function removeRequest() {
+    
+            console.log("Deleting Request");
+    
+    let firstname = document.getElementById("events_id").value;
+    console.log(firstname);
+
+
+    let xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function () {
+
+        if (this.readyState == 4 & this.status == 200) {
+            console.log(this.responseText);
+
+            let requests = JSON.parse(this.responseText);
+
+            populateResult(requests);
+          
+
+        }
+    };
+
+    url = "http://localhost:7001/events/" + events_id
+    xhr.open("DELETE", url, true);
+
+    xhr.send();
+}
+    
+    </script>
+    
+</html>

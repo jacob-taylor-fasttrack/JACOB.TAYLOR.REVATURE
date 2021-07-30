@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body style="height:1500px; background-color:#AAE0F8">
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+        <a class="navbar-brand" href="home.html">Home</a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="form.html">Create Form</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="showforms.html">View Forms</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="approval.html">Approval</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="notifications.html">INFO</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">Logout</a>
+            </li>
+        </ul>
+    </nav>
+    <br>
+    <div>
+        <br>
+    </div>
+
+    <!-- Reimbursement Form -->
+    <br>
+    <h1>View All Forms</h1>
+    <p>"id":1,"eventdate":"Jan 1, 2021, 12:00:00 AM","eventtime":"12:00:00 PM","eventlocation":"detroit","description":"certificate","cost":100.0,"eventType":1,"gradingformat":1,"passingGrade":70}</p>
+    <div id="chgtext">   </div>
+    <button  onclick="document.getElementById('chgtext').innerHTML='Approved';">Approve</button> 
+    <button  onclick="document.getElementById('chgtext').innerHTML='Denied';">Deny</button>
+  
+    </div>
+    <p>  {"id":3,"eventdate":"Jan 3, 2021, 12:00:00 AM","eventtime":"01:30:00 AM","eventlocation":"dallas","description":"field trip","cost":300.0,"eventType":3,"gradingformat":3,"passingGrade":80}</p>
+    <div id="chgtext2">   </div>
+    <button  onclick="document.getElementById('chgtext2').innerHTML='Approved';">Approve</button> 
+    <button  onclick="document.getElementById('chgtext2').innerHTML='Denied';">Deny</button>
+  
+    </div>
+    <p>  {"id":4,"eventdate":"Jan 4, 2021, 12:00:00 AM","eventtime":"02:00:00 AM","eventlocation":"new york","description":"college course","cost":400.0,"eventType":4,"gradingformat":4,"passingGrade":90}</p>
+    <div id="chgtext3">   </div>
+    <button  onclick="document.getElementById('chgtext3').innerHTML='Approved';">Approve</button> 
+    <button  onclick="document.getElementById('chgtext3').innerHTML='Denied';">Deny</button>
+  
+    </div>
+    <p>  {"id":5,"eventdate":"Jan 5, 2021, 12:00:00 AM","eventtime":"02:30:00 AM","eventlocation":"miami","description":"bootcamp","cost":500.0,"eventType":5,"gradingformat":5,"passingGrade":50}</p>
+    <div id="chgtext4">   </div>
+    <button  onclick="document.getElementById('chgtext4').innerHTML='Approved';">Approve</button> 
+    <button  onclick="document.getElementById('chgtext4').innerHTML='Denied';">Deny</button>
+  
+    </div>
+    <p>  {"id":2,"eventdate":"Jan 2, 2021, 12:00:00 AM","eventtime":"01:00:00 AM","eventlocation":"MEXICO","description":"seminar","cost":200.0,"eventType":2,"gradingformat":2,"passingGrade":60}</p>
+    <div id="chgtext5">   </div>
+    <button  onclick="document.getElementById('chgtext5').innerHTML='Approved';">Approve</button> 
+    <button  onclick="document.getElementById('chgtext5').innerHTML='Denied';">Deny</button>
+  
+    </div>
+    <p>  {"id":37,"eventdate":"Jan 2, 2021, 12:00:00 AM","eventtime":"01:00:00 AM","eventlocation":"chicago","description":"seminar","cost":200.0,"eventType":2,"gradingformat":2,"passingGrade":60</p>
+    <div id="chgtext6">   </div>
+    <button  onclick="document.getElementById('chgtext6').innerHTML='Approved';">Approve</button> 
+    <button  onclick="document.getElementById('chgtext6').innerHTML='Denied';">Deny</button>
+  
+    </div>
+
+    <script type="text/javascript" src="showforms.js"></script>
+</body>
+</html>
