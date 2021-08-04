@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <title>DOM Manipulation- Event Listeners</title>
+</head>
+<body>
+   <h1 id="person">Hello, my name is Jacob!</h1> 
+   <h1 onclick="this.innerHTML='Inline change'">We can chagne the DOM with inline JS</h1>
+   <h1 id="internal">we can change the DOM with internal JS</h1>
+    <h1 id="external">we can change the DOM with external JS</h1>
+    <h1 onclick="internalFunc(this)">We can change the DOM with internal js through an event handler</h1>
+    <h1 onclick="externalFunc(this)">We can change the DOM with external js through an event handler</h1>
+
+</body>
+<script>
+    //This is recognized as JS code
+
+    //Grab the element
+    let jacob=document.getElementById("person");
+    jacob.addEventListener("click",()=>{jacob.innerHTML="Hello, my name is Jayden!";console.log(this.event.type)});
+    jacob.addEventListener("mouseover",changeColor);
+
+jacob.onmouseout=()=>{
+    jacob.style.backgroundColor="white";
+}
+
+
+function changeColor(element){
+    //CSS uses kebab casing-> background-color
+    //JS uses camel casing->backgroundColor
+    jacob.style.backgroundColor="orange";
+}
+
+
+
+
+let internalElement=document.getElementById("internal");
+internalElement.onclick=()=>{
+    internalElement.innerHTML="Internal change"
+}
+
+function internalFunc(element){
+    element.innerHTML="Internal change with onclick attribute"
+}
+
+</script>
+<script src="manipulation.js"></script>
+
+</html>

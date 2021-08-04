@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+   
+    <title>Rick and Morty API Call</title>
+</head>
+<body>
+    <h1>Rick and Morty</h1>
+    <button onclick="getCharacter()"> Get Character</button>
+
+    <h2> <button id="genNew">Color Party</button>
+        <span id="color"></span></h2>
+    
+   
+    <table class="table table-striped table-hover table-bordered">
+   <thead>
+       <tr>
+           <th>Character Info</th>
+           <th>Value</th>
+       </tr>
+
+   </thead>
+   <tbody>
+    
+    <tr>
+        <td>Name</td>
+        <td id="name">-</td>
+    </tr>
+    <tr>
+        <td>Status</td>
+        <td id="status">-</td>
+    </tr>
+    <tr>
+        <td>Species</td>
+        <td id="species">-</td>
+    </tr>
+   </tbody>
+   </table>
+</body>
+<script>
+ 
+    function getCharacter(){
+        console.log("Getting Character");
+
+        //step 1
+        let xhttp= new XMLHttpRequest();
+
+        //step 2
+        xhttp.onreadystatechange= function(){
+            console.log("Current Ready State:"+this.readyState);
+
+            if(this.readyState==4&&this.status==200){
+                //we have a successful and completed request and can now process the response
+                console.log("Successful Call");
+                console.log(this.responseText);
+                let character=JSON.parse(this.responseText);
+                console.log(character);
+                console.log(character.name);
+              
+
+
+
+                document.getElementById("name").innerHTML=character.name;
+                document.getElementById("status").innerHTML=character.status;
+                document.getElementById("species").innerHTML=character.species;
+
+
+
+
+              
+
+                
+
+            
+            }else if(this.readyState==4){
+                console.log("Status code :"+this.status);
+            }
+            
+        
+            }
+           let randomNum=Math.floor(Math.random()*671+1);     
+        let url= `https://rickandmortyapi.com/api/character/${randomNum}?format=json`;
+      
+
+        //step 3
+        xhttp.open("GET",url,true);
+
+        //step 4
+        xhttp.send();
+        
+        
+        
+        
+
+                
+        }
+        
+    
+</script>
+<script src="morty.js"></script>
+</html>
